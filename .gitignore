@@ -1,0 +1,43 @@
+
+# Environment and secret files
+.env
+.env.*
+!.env.example
+
+# Dependencies
+/vendor/
+/node_modules/
+
+# IDE and editor files
+/.idea/
+/.vscode/
+*.code-workspace
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs and temporary files
+*.log
+/logs/
+/tmp/
+/temp/
+
+# Cache files
+/cache/
+/.cache/
+
+# Local configuration and backups
+config.local.php
+*.bak
+*.backup
+*.old
+*.orig
+
+# Git
+/.git/
+
+# Local testing files
+/phpunit.xml
+.phpunit.result.cache
