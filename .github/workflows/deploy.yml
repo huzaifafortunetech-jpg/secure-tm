@@ -27,6 +27,6 @@ jobs:
           REMOTE_USER: ${{ secrets.USERNAME }}
           REMOTE_PORT: ${{ secrets.PORT }}
           SOURCE: "./"
-          TARGET: ${{ secrets.REMOTE_TARGET }}
+          TARGET: ${{ secrets.REMOTE_TARGET }} 
           EXCLUDE: "/.git/, /.github/, /.env, /node_modules/, /vendor/"
           ARGS: "-rlgoDzvc -i"
