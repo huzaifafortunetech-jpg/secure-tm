@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <style>
+        nav {
+            position: relative;
+          }
+          .dropdown-toggle {
+          border: 1px solid #DDD;
+          width: 220px;
+          height: 34px;
+          display: inline-block;
+          border-radius: 0;
+          padding: 2px 0 0 5px;
+          margin-right: 10px;
+          font-family: 'Lato';
+          font-size: 1.4em;
+          line-height: 2;
+          background:white;
+          box-sizing:border-box;
+          }
+          ul.dropdown {
+            display:none;
+            position: absolute;
+            top: 100%;
+            margin-top: .5em;
+            background: #fff;
+            min-width: 12em;
+            padding: 0;
+          border: 1px solid #DDD;
+          margin:0;
+          width:220px;
+          box-sizing:border-box;}
+          ul.dropdown li {background:none!important; list-style-type:none;}
+          ul.dropdown li a {padding:5px;
+                  display: block;}
+          ul.dropdown li a:hover {font-weight:700;}
+    </style>
+</head>
+<body>
+    <nav>
+        <a class="dropdown-toggle" href="#" title="Please Select">Select Payment<span class="selectArrow"></span></a>
+        <ul class="dropdown">
+          <li><a href="../payment-1/">Payment 1</a></li>
+          <li><a href="../payment-49/">Payment 49</a></li>
+          <li><a href="../payment-99/">Payment 99</a></li>
+          <li><a href="../payment-149/">Payment 149</a></li>
+          <li><a href="../payment-199/">Payment 199</a></li>
+          <li><a href="../payment-299/">Payment 299</a></li>
+          <li><a href="../payment-350/">Payment 350</a></li>
+          <li><a href="../payment-399/">Payment 399</a></li>
+          <li><a href="../payment-450/">Payment 450</a></li>
+          <li><a href="../payment-599/">Payment 599</a></li>
+          <li><a href="../payment-700/">Payment 700</a></li>
+          <li><a href="../payment-745/">Payment 745</a></li>
+          <li><a href="../payment-750/">Payment 750</a></li>
+          <li><a href="../payment-799/">Payment 799</a></li>
+          <li><a href="../payment-850/">Payment 850</a></li>
+          <li><a href="../payment-899/">Payment 899</a></li>
+          <li><a href="../payment-950/">Payment 950</a></li>
+          <li><a href="../payment-999/">Payment 999</a></li>
+          <li><a href="../payment-1049/">Payment 1049</a></li>
+          <li><a href="../payment-1050/">Payment 1050</a></li>
+          <li><a href="../payment-1099/">Payment 1099</a></li>
+          <li><a href="../payment-1149/">Payment 1149</a></li>
+          <li><a href="../payment-1199/">Payment 1199</a></li>
+          <li><a href="../payment-1249/">Payment 1249</a></li>
+          <li><a href="../payment-1299/">Payment 1299</a></li>
+          <li><a href="../payment-1349/">Payment 1349</a></li>
+          <li><a href="../payment-1399/">Payment 1399</a></li>
+          <li><a href="../payment-1449/">Payment 1449</a></li>
+          <li><a href="../payment-1500/">Payment 1500</a></li>
+          <li><a href="../payment-1749/">Payment 1749</a></li>
+           <li><a href="../payment-1750/">Payment 1750</a></li>
+          <li><a href="../payment-2000/">Payment 2000</a></li>
+          <li><a href="../payment-2100/">Payment 2100</a></li>
+          <li><a href="../payment-2500/">Payment 2500</a></li>
+          <li><a href="../payment-3000/">Payment 3000</a></li>
+          <li><a href="../payment-3500/">Payment 3500</a></li>
+          <li><a href="../payment-4000/">Payment 4000</a></li>
+
+        </ul>
+        </nav>
+
+        <script type="text/javascript">
+
+            $(function() {
+  
+                // Dropdown toggle
+                $('.dropdown-toggle').click(function(){
+                  $(this).next('.dropdown').toggle();
+                });
+                
+                $(document).click(function(e) {
+                  var target = e.target;
+                  if (!$(target).is('.dropdown-toggle') && !$(target).parents().is('.dropdown-toggle')) {
+                    $('.dropdown').hide();
+                  }
+                });
+                        });
+        </script>
+</body>
+</html>

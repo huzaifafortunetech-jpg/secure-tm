@@ -1,0 +1,24 @@
+RewriteEngine On
+
+# 1. Redirect index.php to root
+RewriteCond %{THE_REQUEST} \s/index\.php [NC]
+RewriteRule ^index\.php$ / [R=301,L]
+
+# 2. Remove .php extension (SIRF tab jab POST request NA HO)
+RewriteCond %{REQUEST_METHOD} !POST
+RewriteCond %{THE_REQUEST} \s/([^.]+)\.php [NC]
+RewriteRule ^ %1 [R=301,L]
+
+# 3. Internally map clean URL to .php file (Ye data nahi rokta)
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^/]+)/?$ $1.php [L]
+
+# 4. Prevent direct access to .php (SIRF tab jab POST request NA HO)
+RewriteCond %{REQUEST_METHOD} !POST
+RewriteCond %{THE_REQUEST} \.php [NC]
+RewriteRule ^(.*)\.php$ /$1 [R=301,L]
+
+# Map clean URLs to .php even in subfolders
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)/?$ $1.php [L]
