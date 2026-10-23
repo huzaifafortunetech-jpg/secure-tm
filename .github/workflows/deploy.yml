@@ -23,10 +23,10 @@ jobs:
         uses: easingthemes/ssh-deploy@v5.0.0
         with:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
+          REMOTE_HOST: ${{ secrets.HOST }}
+          REMOTE_USER: ${{ secrets.USERNAME }}
+          REMOTE_PORT: ${{ secrets.PORT }}
           SOURCE: "./"
           TARGET: ${{ secrets.REMOTE_TARGET }}
-          EXCLUDE: "/.git/, /.github/, /.env, /node_modules/"
+          EXCLUDE: "/.git/, /.github/, /.env, /node_modules/, /vendor/"
           ARGS: "-rlgoDzvc -i"
