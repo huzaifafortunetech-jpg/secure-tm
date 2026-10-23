@@ -22,10 +22,10 @@ jobs:
       - name: Deploy files to Hostinger
         uses: easingthemes/ssh-deploy@v5.0.0
         with:
-          SSH_KEY: ${{ secrets.SSH_KEY }}
-          HOST: ${{ secrets.HOST }}
-          USERNAME: ${{ secrets.USERNAME }}
-          PORT: ${{ secrets.PORT }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
           SOURCE: "./"
           TARGET: ${{ secrets.REMOTE_TARGET }}
           EXCLUDE: "/.git/, /.github/, /.env, /node_modules/"
