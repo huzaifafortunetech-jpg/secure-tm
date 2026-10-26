@@ -1,0 +1,6 @@
+{
+  "runtime": "PHP/8.5.12",
+  "apache_subdirectory_views": 62,
+  "legacy_asset_aliases": 25,
+  "private_paths": "passed"
+}

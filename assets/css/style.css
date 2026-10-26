@@ -10,17 +10,17 @@
 
 @font-face {
     font-family: mySecondFont;
-    src: url('../fonts/HostGrotesk-SemiBold.ttf');
+    src: url('../fonts/host-grotesk-semi-bold.ttf');
 
   }
 
   @font-face {
     font-family: myFirstFont;
-    src: url('../fonts/HostGrotesk-SemiBold.ttf');
+    src: url('../fonts/host-grotesk-semi-bold.ttf');
   }
   @font-face {
     font-family: myThirdFont;
-    src: url('../fonts/KantumruyPro-Regular.ttf');
+    src: url('../fonts/kantumruy-pro-regular.ttf');
   }
 
 html,

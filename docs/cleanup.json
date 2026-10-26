@@ -1,0 +1,25 @@
+{
+  "backup": "C:\\xampp\\htdocs\\secure-tm-before-components-20261024-004211",
+  "removed": [
+    "PHPMailer-old/",
+    "payment-form/PHPMailer/",
+    "header.html",
+    "footer.html",
+    "link.html",
+    "partners.html",
+    "cta-info.html",
+    "templates/scripts/agent_form-2.php",
+    "templates/scripts/agent_form-3.php",
+    "templates/pages/brief.php",
+    "templates/pages/brieff.php",
+    "templates/pages/contact-form.php",
+    "templates/pages/lp-form-page.php",
+    "templates/pages/modal_form.php",
+    "templates/pages/web-popup-form.php",
+    "templates/scripts/contact-form-1.php",
+    "templates/scripts/lp-form-page-1.php",
+    "templates/scripts/modal_form-1.php",
+    "templates/scripts/modal_form-2.php"
+  ],
+  "preserved": "All original page and form URLs through aliases, existing content and styling, original assets, client uploads, environment and deployment configuration."
+}

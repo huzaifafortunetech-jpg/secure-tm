@@ -1,24 +1,67 @@
+DirectoryIndex index.php index.html
 RewriteEngine On
 
-# 1. Redirect index.php to root
-RewriteCond %{THE_REQUEST} \s/index\.php [NC]
-RewriteRule ^index\.php$ / [R=301,L]
+# Only public entry files and existing assets may be requested directly.
+RewriteRule ^(?:includes|templates|data|tools|docs|libraries)(?:/|$) - [F,END,NC]
+RewriteRule (^|/)\. - [F,END]
+RewriteRule ^(?:composer\.(?:json|lock)|README\.md|router\.php)$ - [F,END,NC]
 
-# 2. Remove .php extension (SIRF tab jab POST request NA HO)
+# Legacy URLs continue to serve their canonical files without changing the visible path.
+RewriteRule ^AE_Logo_0f30048c26\.svg$ assets/images/payment-methods/american-express.svg [END]
+RewriteRule ^Discover_Card_Logo_e5a28a3aeb\.svg$ assets/images/payment-methods/discover.svg [END]
+RewriteRule ^Landing\-Page\.html$ landing-page.html [END]
+RewriteRule ^Mastercard_Logo_9db9877556\.svg$ assets/images/payment-methods/mastercard.svg [END]
+RewriteRule ^Visa_Logo_83d9074ab9\.svg$ assets/images/payment-methods/visa.svg [END]
+RewriteRule ^agent_form(?:\.php)?/?$ agent-form.php [END]
+RewriteRule ^assets/fonts/HostGrotesk\-Regular\.ttf$ assets/fonts/host-grotesk-regular.ttf [END]
+RewriteRule ^assets/fonts/HostGrotesk\-SemiBold\.ttf$ assets/fonts/host-grotesk-semi-bold.ttf [END]
+RewriteRule ^assets/fonts/HostGrotesk\-VariableFont_wght\.ttf$ assets/fonts/host-grotesk-variable-font-wght.ttf [END]
+RewriteRule ^assets/fonts/KantumruyPro\-Regular\.ttf$ assets/fonts/kantumruy-pro-regular.ttf [END]
+RewriteRule ^assets/images/03\x20\(1\)\.webp$ assets/images/03-1.webp [END]
+RewriteRule ^assets/images/home\-page/Vector\x2071\.png$ assets/images/home-page/vector-71.png [END]
+RewriteRule ^assets/images/home\-page/clarity_block\-quote\-line\.png$ assets/images/home-page/clarity-block-quote-line.png [END]
+RewriteRule ^brief(?:\.php)?/?$ trademark-brief.php [END]
+RewriteRule ^brieff(?:\.php)?/?$ package-brief.php [END]
+RewriteRule ^download\.svg$ assets/images/icons/download.svg [END]
+RewriteRule ^envelope\-solid\-full\.svg$ assets/images/icons/envelope-solid-full.svg [END]
+RewriteRule ^hero\-section\.png$ assets/images/landing-page/hero-section.png [END]
+RewriteRule ^icons\x20footer\-01\.png$ assets/images/icons/contact-phone.png [END]
+RewriteRule ^icons\x20footer\-02\.png$ assets/images/icons/contact-email.png [END]
+RewriteRule ^light\-logo\.png$ assets/images/light-logo.png [END]
+RewriteRule ^lp\-form\-page(?:\.php)?/?$ landing-enquiry.php [END]
+RewriteRule ^lp\-style\.css$ assets/css/landing-page.css [END]
+RewriteRule ^modal_form(?:\.php)?/?$ modal-form.php [END]
+RewriteRule ^payment\-form/agent_form(?:\.php)?/?$ payment-form/agent-form.php [END]
+RewriteRule ^payment\-form/brieff(?:\.php)?/?$ payment-form/package-brief.php [END]
+RewriteRule ^payment\-form/client_form(?:\.php)?/?$ payment-form/client-form.php [END]
+RewriteRule ^payment\-form/icons\x20footer\-02\.png$ assets/images/icons/contact-email.png [END]
+RewriteRule ^payment\-form/light\-logo\.png$ assets/images/light-logo.png [END]
+RewriteRule ^payment\-form/logo\.png$ assets/images/logo.png [END]
+RewriteRule ^payment\-form/lp\-style\.css$ assets/css/payment-form.css [END]
+RewriteRule ^phone\-volume\-solid\-full\.svg$ assets/images/icons/phone-volume-solid-full.svg [END]
+RewriteRule ^secure\-TM\-new\-logo\-COLOR\.png$ assets/images/brand/logo-color.png [END]
+RewriteRule ^secure\-TM\-new\-logo\-FOOTER\.png$ assets/images/brand/logo-footer.png [END]
+RewriteRule ^web\-popup\-form(?:\.php)?/?$ popup-form.php [END]
+
+# Preserve current clean routes, including installations in a subdirectory.
+# POST endpoints are served directly so submission bodies survive.
 RewriteCond %{REQUEST_METHOD} !POST
-RewriteCond %{THE_REQUEST} \s/([^.]+)\.php [NC]
-RewriteRule ^ %1 [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+[^\s?]*index\.php(?:[?\s]) [NC]
+RewriteCond %{REQUEST_URI} ^(.*/)index\.php$ [NC]
+RewriteRule ^index\.php$ %1 [R=301,L]
 
-# 3. Internally map clean URL to .php file (Ye data nahi rokta)
-RewriteCond %{REQUEST_FILENAME}.php -f
-RewriteRule ^([^/]+)/?$ $1.php [L]
-
-# 4. Prevent direct access to .php (SIRF tab jab POST request NA HO)
 RewriteCond %{REQUEST_METHOD} !POST
-RewriteCond %{THE_REQUEST} \.php [NC]
-RewriteRule ^(.*)\.php$ /$1 [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+[^\s?]*\.php(?:[?\s]) [NC]
+RewriteCond %{REQUEST_URI} ^(.+)\.php$ [NC]
+RewriteRule ^(.+)\.php$ %1 [R=301,L,NE]
 
-# Map clean URLs to .php even in subfolders
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_METHOD} !POST
+RewriteCond %{REQUEST_URI} ^(.+)/$
+RewriteRule ^(.+)/$ %1 [R=301,L,NE]
+
+# Existing extensionless URLs resolve to unchanged public PHP entry files.
+RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.php -f
-RewriteRule ^(.*)/?$ $1.php [L]
+RewriteRule ^(.+)$ $1.php [END]

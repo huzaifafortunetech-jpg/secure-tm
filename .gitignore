@@ -41,3 +41,7 @@ config.local.php
 # Local testing files
 /phpunit.xml
 .phpunit.result.cache
+
+# Python check artifacts
+__pycache__/
+*.py[cod]

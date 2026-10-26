@@ -1,0 +1,12 @@
+{
+    "name": "secure-tm/website",
+    "description": "Secure TM PHP website with shared components and editable content catalogs",
+    "type": "project",
+    "require": {
+        "php": "~8.5.0",
+        "ext-curl": "*",
+        "ext-openssl": "*",
+        "ext-fileinfo": "*",
+        "ext-simplexml": "*"
+    }
+}

@@ -1,0 +1,15 @@
+{
+  "php_runtime": "8.5.12",
+  "php_files_linted": 305,
+  "syntax_or_deprecation_failures": [],
+  "existing_assets_preserved": 95,
+  "application_file_naming": "lowercase-kebab-case",
+  "backup": "C:\\xampp\\htdocs\\secure-tm-before-components-20261024-004211",
+  "rendered_views_checked": 62,
+  "legacy_asset_aliases_checked": 25,
+  "offline_handler_scenarios": 14,
+  "agent_link_creation_and_resolution": "passed",
+  "legacy_named_link_migration": "passed",
+  "real_emails_sent": 0,
+  "real_payment_transactions": 0
+}
